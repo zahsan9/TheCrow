@@ -172,6 +172,12 @@ function buildEditors() {
   });
 }
 
+/* ── Nav shadow on scroll ────────────────────────────────────────────────── */
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 0);
+}, { passive: true });
+
 /* ── Boot ─────────────────────────────────────────────────────────────────── */
 init();
 buildEditors();
