@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The CROW Journal | UW Bothell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Henny+Penny&family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">The CROW</span>
+    <div class="nav__spacer"></div>
+    <ul class="nav__links">
+      <li><a href="#about"    class="nav__link">About us</a></li>
+      <li><a href="#archives" class="nav__link">Archives</a></li>
+      <li><a href="#"         class="nav__link">Guidelines</a></li>
+      <li><a href="#editors"  class="nav__link">Meet the Editors</a></li>
+      <li><a href="#"         class="nav__link">FAQ</a></li>
+    </ul>
+    <a href="#" class="nav__submit">SUBMIT</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <a href="#" class="hero__submit-link">SUBMIT</a>
+    <img class="hero__bird" src="https://www.figma.com/api/mcp/asset/8b29dbf8-2d62-471f-b106-f09b4bbd4fc2" alt="">
+    <p class="hero__tagline">
+      The CROW Journal is a compilation of research-related work submitted and
+      published by students across all disciplines of University of Washington Bothell.
+      Applications open until [date]
+    </p>
+    <p class="hero__dates">
+      Priority submissions by January 1 &nbsp;&nbsp; Final submissions by March 1
+    </p>
+    <a href="#archives" class="hero__cta">View Archives</a>
+  </section>
+
+  <!-- ARCHIVES CAROUSEL -->
+  <section class="archives" id="archives">
+    <h2 class="archives__heading">Archives</h2>
+
+    <div class="carousel">
+      <button class="carousel__btn" id="btnPrev" aria-label="Previous volume">
+        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="carousel__track" id="carouselTrack">
+        <!-- 5 cards: far-left and far-right stay off-screen, providing smooth entry/exit -->
+        <article class="vol-card" id="card0"><div class="vol-card__cover"></div><footer class="vol-card__footer"><span class="vol-card__title"></span><span class="vol-card__year"></span></footer></article>
+        <article class="vol-card" id="card1"><div class="vol-card__cover"></div><footer class="vol-card__footer"><span class="vol-card__title"></span><span class="vol-card__year"></span></footer></article>
+        <article class="vol-card" id="card2"><div class="vol-card__cover"></div><footer class="vol-card__footer"><span class="vol-card__title"></span><span class="vol-card__year"></span></footer></article>
+        <article class="vol-card" id="card3"><div class="vol-card__cover"></div><footer class="vol-card__footer"><span class="vol-card__title"></span><span class="vol-card__year"></span></footer></article>
+        <article class="vol-card" id="card4"><div class="vol-card__cover"></div><footer class="vol-card__footer"><span class="vol-card__title"></span><span class="vol-card__year"></span></footer></article>
+      </div>
+
+      <button class="carousel__btn" id="btnNext" aria-label="Next volume">
+        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2 class="about__heading">About us</h2>
+    <p class="about__body">
+      The Campus Research &amp; Observational Writings (CROW) at UWB is an ongoing
+      collaborative process that seeks to highlight the superior research conducted by UWB
+      students, and to provide space for comparing, analyzing, and generally thinking about
+      the ways research and knowledge production intersect. Our mission is to publish
+      research on a broad range of topics spanning all disciplines, levels of analysis, and
+      national contexts. With collaboration from the Writing and Communication Center, the
+      CROW offers an opportunity for students to publish their work, as well as hone their
+      writing skills and emerge as more effective writers.
+    </p>
+  </section>
+
+  <!-- MEET THE EDITORS -->
+  <section class="editors" id="editors">
+    <h2 class="editors__heading">Meet the Editors</h2>
+    <ul class="editors__grid" id="editorsGrid"></ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__left">
+      <img class="footer__uwb-logo"
+           src="https://www.figma.com/api/mcp/asset/cf0876bd-49f7-446e-b08d-8ab2875994a2"
+           alt="University of Washington Bothell">
+      <p class="footer__policy">
+        The CROW is an equal opportunity student publication that does not discriminate
+        or publish works that discriminate against any sex, gender expression, sexual
+        orientation, race, color, ethnicity, creed, religion, or ability. We thoughtfully
+        consider all potential publications within this guideline.
+      </p>
+      <button class="footer__top-btn"
+              onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</button>
+    </div>
+
+    <div class="footer__right">
+      <div class="footer__contact-block">
+        <span class="footer__label">CONTACT</span>
+        <a href="mailto:publish@uw.edu" class="footer__info-row">
+          <span class="footer__icon" aria-hidden="true">
+            <img src="https://www.figma.com/api/mcp/asset/2dadf7b8-77dc-467a-80d1-e71880101038"
+                 alt="" width="18" height="16">
+          </span>
+          publish@uw.edu
+        </a>
+      </div>
+      <div class="footer__follow-block">
+        <span class="footer__label">FOLLOW US</span>
+        <a href="https://instagram.com/uwbcrow" target="_blank" rel="noreferrer"
+           class="footer__info-row">
+          <span class="footer__icon" aria-hidden="true">
+            <img src="https://www.figma.com/api/mcp/asset/e7086411-a7c7-45dd-8eb4-14a3d7f02cc9"
+                 alt="" width="24" height="24">
+          </span>
+          @uwbcrow
+        </a>
+      </div>
+      <img class="footer__crow-img"
+           src="https://www.figma.com/api/mcp/asset/59224d8e-2fb7-4d87-8647-661104cdab4d"
+           alt="" aria-hidden="true">
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
