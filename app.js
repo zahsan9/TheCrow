@@ -76,9 +76,13 @@ function init() {
 }
 
 /* ── Navigate: delta = +1 (older/right) or -1 (newer/left) ──────────────── */
+const track = document.getElementById('carouselTrack');
+
 function navigate(delta) {
   if (isAnimating) return;
   isAnimating = true;
+
+  track.classList.add('navigating');
 
   const isNext     = delta > 0;
   const exitingPos = isNext ? 'far-left' : 'far-right';   // card leaving the stage
@@ -119,13 +123,30 @@ function navigate(delta) {
     card.dataset.pos = pos[i];
   });
 
-  // 8. Unlock after the CSS transition completes (0.48s + small buffer)
-  setTimeout(() => { isAnimating = false; }, 520);
+  // 8. Unlock after the CSS transition completes (0.48s + small buffer).
+  //    Keep 'navigating' on the track until the mouse actually moves —
+  //    CSS :hover re-evaluates when an element slides under a stationary
+  //    cursor, so we can't safely remove the class on a timer alone.
+  setTimeout(() => { isAnimating = false; }, 700);
 }
+
+// Lift the hover-suppression only once the mouse genuinely moves
+document.addEventListener('mousemove', () => {
+  track.classList.remove('navigating');
+}, { passive: true });
 
 /* ── Wire up controls ────────────────────────────────────────────────────── */
 document.getElementById('btnPrev').addEventListener('click', () => navigate(-1));
 document.getElementById('btnNext').addEventListener('click', () => navigate(+1));
+
+// Clicking a side card navigates to it
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const p = card.dataset.pos;
+    if (p === 'left')  navigate(-1);
+    if (p === 'right') navigate(+1);
+  });
+});
 
 // Make :active work on iOS Safari (requires a touchstart listener on the element)
 [document.getElementById('btnPrev'), document.getElementById('btnNext')].forEach(btn => {
@@ -140,6 +161,10 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── Editors ─────────────────────────────────────────────────────────────── */
+const PERSON_ICON_BG     = 'https://www.figma.com/api/mcp/asset/885311e9-e8ee-44af-84c2-666b7bf5f2ae';
+const PERSON_ICON_PERSON = 'https://www.figma.com/api/mcp/asset/a74d5b4c-ea80-4854-85f8-c7d3f8ad84de';
+const PERSON_ICON_VECTOR = 'https://www.figma.com/api/mcp/asset/6f88c0e5-0948-4093-bcc6-d2beace4ecf5';
+
 const EDITORS = [
   { name: 'Cecelia Negash (she/her)',              role: 'Undergraduate Education' },
   { name: 'Chuck Frickin-Bats (they/them)',         role: 'Graduate Community Health & Social Justice' },
@@ -149,27 +174,36 @@ const EDITORS = [
   { name: 'Newton (Newt) Austria-Ball (they/them)', role: 'Undergraduate Biology & Creative Writing' },
   { name: 'Rehema Hassani (she/her)',               role: 'Undergraduate Health Education & Promotion & Global Health' },
   { name: 'Sabine Drake (she/her)',                 role: 'Undergraduate Health Studies & Chemistry' },
-  { name: 'Andrea Stone PhD.',                      role: 'Advisor' },
-  { name: 'Erik Echols',                            role: 'Just some guy, Advisor' },
 ];
+
+const ADVISORS = [
+  { name: 'Andrea Stone PhD.', role: 'Advisor' },
+  { name: 'Erik Echols',       role: 'Just some guy, Advisor' },
+];
+
+function makeEditorCard(person) {
+  const li = document.createElement('li');
+  li.className = 'editor-card';
+  li.innerHTML = `
+    <div class="editor-card__avatar" aria-hidden="true">
+      <img class="editor-card__avatar-bg"     src="${PERSON_ICON_BG}"     alt="">
+      <div class="editor-card__avatar-person">
+        <img class="editor-card__avatar-person-img" src="${PERSON_ICON_PERSON}" alt="">
+        <img class="editor-card__avatar-vector"     src="${PERSON_ICON_VECTOR}" alt="">
+      </div>
+    </div>
+    <p class="editor-card__name">${person.name}</p>
+    <p class="editor-card__role">${person.role}</p>
+  `;
+  return li;
+}
 
 function buildEditors() {
   const grid = document.getElementById('editorsGrid');
-  EDITORS.forEach(ed => {
-    const li = document.createElement('li');
-    li.className = 'editor-card';
-    li.innerHTML = `
-      <div class="editor-card__avatar" aria-hidden="true">
-        <svg viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="34" r="20" fill="#f8f3ec" opacity="0.6"/>
-          <ellipse cx="50" cy="82" rx="32" ry="20" fill="#f8f3ec" opacity="0.6"/>
-        </svg>
-      </div>
-      <p class="editor-card__name">${ed.name}</p>
-      <p class="editor-card__role">${ed.role}</p>
-    `;
-    grid.appendChild(li);
-  });
+  EDITORS.forEach(ed => grid.appendChild(makeEditorCard(ed)));
+
+  const advisorsGrid = document.getElementById('advisorsGrid');
+  ADVISORS.forEach(ad => advisorsGrid.appendChild(makeEditorCard(ad)));
 }
 
 /* ── Nav shadow on scroll ────────────────────────────────────────────────── */

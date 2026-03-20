@@ -13,7 +13,7 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <span class="nav__logo">The CROW</span>
+    <a href="#" class="nav__logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">The CROW</a>
     <div class="nav__spacer"></div>
     <ul class="nav__links">
       <li><a href="#about"    class="nav__link">About us</a></li>
@@ -27,8 +27,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <a href="#" class="hero__submit-link">SUBMIT</a>
-    <img class="hero__bird" src="https://www.figma.com/api/mcp/asset/8b29dbf8-2d62-471f-b106-f09b4bbd4fc2" alt="">
+<img class="hero__bird" src="https://www.figma.com/api/mcp/asset/8b29dbf8-2d62-471f-b106-f09b4bbd4fc2" alt="">
     <p class="hero__tagline">
       The CROW Journal is a compilation of research-related work submitted and
       published by students across all disciplines of University of Washington Bothell.
@@ -89,14 +88,20 @@
   <section class="editors" id="editors">
     <h2 class="editors__heading">Meet the Editors</h2>
     <ul class="editors__grid" id="editorsGrid"></ul>
+    <hr class="editors__divider">
+    <ul class="editors__grid editors__grid--advisors" id="advisorsGrid"></ul>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
+
+    <!-- UWB logo: absolutely positioned near the top, matching Figma -->
+    <img class="footer__uwb-logo"
+         src="https://www.figma.com/api/mcp/asset/cf0876bd-49f7-446e-b08d-8ab2875994a2"
+         alt="University of Washington Bothell">
+
+    <!-- Left col: policy text + button, starts lower per Figma -->
     <div class="footer__left">
-      <img class="footer__uwb-logo"
-           src="https://www.figma.com/api/mcp/asset/cf0876bd-49f7-446e-b08d-8ab2875994a2"
-           alt="University of Washington Bothell">
       <p class="footer__policy">
         The CROW is an equal opportunity student publication that does not discriminate
         or publish works that discriminate against any sex, gender expression, sexual
@@ -107,6 +112,7 @@
               onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</button>
     </div>
 
+    <!-- Right col: bordered box with contact info + crow -->
     <div class="footer__right">
       <div class="footer__contact-block">
         <span class="footer__label">CONTACT</span>
@@ -133,6 +139,7 @@
            src="https://www.figma.com/api/mcp/asset/59224d8e-2fb7-4d87-8647-661104cdab4d"
            alt="" aria-hidden="true">
     </div>
+
   </footer>
 
   <script src="app.js"></script>
