@@ -8,7 +8,7 @@ a { text-decoration: none; }
 :root {
   --dark:   #191331;
   --purple: #43396d;
-  --cream:  #e8e2d9;
+  --cream:  #f8f3ec;
   --ink:    #2d2357;
   --white:  #ffffff;
 }
@@ -30,7 +30,7 @@ body {
 .nav {
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 121px;
   padding: 0 75px 0 55px;
   background: var(--paper-texture) var(--cream);
   position: sticky;
@@ -122,10 +122,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 72px); /* fill viewport below the nav */
+  min-height: 882px;
   padding: 60px 20px;
   text-align: center;
-  gap: 24px;
 }
 
 .hero__bird {
@@ -138,16 +137,34 @@ body {
 .hero__tagline {
   max-width: 836px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
-  line-height: 1.6;
-  color: var(--ink);
+  font-size: 22px;
+  line-height: normal;
+  color: #000;
+  margin-top: 14px;
+  padding-bottom: 28px;
+  position: relative;
+}
+
+.hero__tagline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 147px;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.35;
 }
 
 .hero__dates {
   font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: normal;
   color: var(--ink);
-  opacity: 0.8;
+  margin-top: 28px;
+  text-align: center;
 }
 
 .hero__cta {
@@ -156,11 +173,11 @@ body {
   padding: 14px 40px;
   background: var(--ink);
   color: var(--cream);
-  border-radius: 40px;
+  border-radius: 8px;
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 18px;
-  margin-top: 8px;
+  margin-top: 28px;
 }
 .hero__cta {
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -329,12 +346,15 @@ body {
 
 /* "Coming Soon" text (font-size at native 405px width; scale handles visual size) */
 .coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Henny Penny', cursive;
   font-size: 54px;
   color: var(--cream);
   text-align: center;
   pointer-events: none;
-  line-height: 1.35;
+  line-height: 50px;
 }
 
 /* White footer strip */
@@ -375,8 +395,8 @@ body {
 .about__body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
-  font-size: 22px;
-  line-height: 1.6;
+  font-size: 36px;
+  line-height: normal;
   color: #000;
   max-width: 1283px;
 }
